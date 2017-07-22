@@ -6,8 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	CharacterController cc;
-	public float fallSpeed = 6.5f;
-	public float speed = 30f;
+	public float speed;
 
 	float xMove;
 	float zMove;
@@ -18,7 +17,6 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Hello");
 	}
 	
 	// Update is called once per frame
@@ -31,10 +29,7 @@ public class Player : MonoBehaviour {
 			movement.x = xMove * speed;
 			movement.z = zMove * speed;
 		}
-		movement = transform.TransformDirection (movement);
-		movement.y -= fallSpeed;
-		movement*= Time.deltaTime;
-		Debug.Log ("total movement: " + movement.ToString());
+		movement = transform.TransformDirection (movement) * Time.deltaTime;
 		cc.Move(movement);
 	}
 }

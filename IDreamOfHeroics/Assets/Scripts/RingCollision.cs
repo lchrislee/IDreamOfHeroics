@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RingCollision : MonoBehaviour {
-
+	private bool collided = false;
 	// Use this for initialization
 	void Start () {
 	}
@@ -13,10 +13,13 @@ public class RingCollision : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerExit(Collider other)
 	{
-		Debug.Log ("Enter");
-		Destroy (this.gameObject);
+		if (!collided) {
+			collided = true;
+			--RingManager.currentRings;
+			Destroy (this.gameObject);
+		}
 	}
 
 }
