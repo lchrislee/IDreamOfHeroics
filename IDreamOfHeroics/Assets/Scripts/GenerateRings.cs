@@ -14,7 +14,7 @@ public class GenerateRings : MonoBehaviour {
 		Vector3 playerPosition = player.transform.position;
 		Quaternion facingUp = Quaternion.identity;
 		facingUp.eulerAngles = new Vector3 (90, 0, 0);
-		for (int i = 0; i < 20; ++i) {
+		for (int i = 0; i < 10; ++i) {
 			float x = Random.Range (minPositionRange.x, maxPositionRange.x);
 			float y = Random.Range (minPositionRange.y, maxPositionRange.y);
 			float z = Random.Range (minPositionRange.z, maxPositionRange.z);

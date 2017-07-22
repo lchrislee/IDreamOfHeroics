@@ -6,11 +6,11 @@ public class FollowPlayer : MonoBehaviour {
 
 	public GameObject player;
 
-	private Vector3 offset;
+	private float yOffset;
 
 	// Use this for initialization
 	void Start () {
-		offset = transform.position - player.transform.position;
+		yOffset = transform.position.y - player.transform.position.y;
 	}
 	
 	// Update is called once per frame
@@ -19,6 +19,8 @@ public class FollowPlayer : MonoBehaviour {
 	}
 
 	void LateUpdate(){
-		transform.position = player.transform.position + offset;
+		Vector3 newPosition = transform.position;
+		newPosition.y = player.transform.position.y + yOffset;
+		transform.position = newPosition;
 	}
 }
