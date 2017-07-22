@@ -16,9 +16,6 @@ public class RingManager : MonoBehaviour {
 	public static int collidedRingCount = 0;
 	public static int missedRingCount = 0;
 
-	public Text ringsHit;
-	public Text ringsMissed;
-
 	// Use this for initialization
 	void Start () {
 		currentRings = 0;
@@ -27,15 +24,9 @@ public class RingManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentRings < maxConcurrentRings) {
+		if (currentRings < maxConcurrentRings && !CountdownClock.IsCompleted) {
 			AddRings ();
 		}
-	}
-
-	void LateUpdate()
-	{
-		ringsHit.text = "Caught: " + collidedRingCount;
-		ringsMissed.text = "Missed: " + missedRingCount;
 	}
 
 	void AddRings()

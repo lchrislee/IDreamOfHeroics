@@ -19,7 +19,7 @@ public class RingMovement : MonoBehaviour {
 			markedForDeletion = true;
 			RingManager.Miss ();
 			Destroy (this.gameObject);
-		} else {
+		} else if (!CountdownClock.IsCompleted){
 			Vector3 movement = new Vector3 (0, movementSpeed, 0);
 			movement *= Time.deltaTime;
 			transform.position += movement;

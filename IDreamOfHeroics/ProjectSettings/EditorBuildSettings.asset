@@ -4,4 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 57b7c1e84f68542f68ddc3e01e6bbb7f
+  - enabled: 1
+    path: Assets/Scenes/Fall.unity
+    guid: 1299c9f77ff0a45b38288b3396e9ef68
+  - enabled: 1
+    path: Assets/Scenes/Chase.unity
+    guid: 09c5ff7140090456f8a6539804f47c6b
+  - enabled: 1
+    path: Assets/Scenes/Survival.unity
+    guid: 94a3329d10ed24162b6e88873ab089c0
+  - enabled: 1
+    path: Assets/Scenes/Nightmare.unity
+    guid: fc40eef57da3e444b9d20fda220af865
