@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour {
+public class FallingPlayer : MonoBehaviour {
 
 	CharacterController cc;
 	public float speed;
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!CountdownClock.IsCompleted) {

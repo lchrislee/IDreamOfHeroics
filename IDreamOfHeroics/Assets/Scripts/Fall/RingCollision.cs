@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class RingCollision : MonoBehaviour {
 	private bool collided = false;
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnTriggerExit(Collider other)
 	{
