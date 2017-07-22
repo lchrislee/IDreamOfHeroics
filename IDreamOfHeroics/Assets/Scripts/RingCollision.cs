@@ -17,7 +17,7 @@ public class RingCollision : MonoBehaviour {
 	{
 		if (!collided) {
 			collided = true;
-			--RingManager.currentRings;
+			RingManager.Hit ();
 			Destroy (this.gameObject);
 		}
 	}

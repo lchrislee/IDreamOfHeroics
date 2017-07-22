@@ -15,9 +15,9 @@ public class RingMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-		if (transform.position.y > maxY) {
+		if (transform.position.y > maxY && !markedForDeletion) {
 			markedForDeletion = true;
-			--RingManager.currentRings;
+			RingManager.Miss ();
 			Destroy (this.gameObject);
 		} else {
 			Vector3 movement = new Vector3 (0, movementSpeed, 0);
