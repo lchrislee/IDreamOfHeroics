@@ -15,22 +15,17 @@ public class FallingPlayer : MonoBehaviour {
 		cc = GetComponent<CharacterController> ();
 	}
 
-	// Use this for initialization
-	void Start () {
-	}
-
 	// Update is called once per frame
 	void Update () {
-		if (!CountdownClock.IsCompleted) {
-			xMove = Input.GetAxis ("Horizontal");
-			zMove = Input.GetAxis ("Vertical");
-			Vector3 movement = Vector3.zero;
-			if (xMove != 0 || zMove != 0) {
-				movement.x = xMove * speed;
-				movement.z = zMove * speed;
-			}
-			movement = transform.TransformDirection (movement) * Time.deltaTime;
-			cc.Move (movement);
-		}
+        xMove = Input.GetAxis ("Horizontal");
+        zMove = Input.GetAxis ("Vertical");
+        Vector3 movement = Vector3.zero;
+        if (xMove != 0 || zMove != 0) {
+            movement.x = xMove;
+            movement.z = zMove;
+        }
+        movement = movement.normalized * speed;
+        movement = transform.TransformDirection (movement) * Time.deltaTime;
+        cc.Move (movement);
 	}
 }

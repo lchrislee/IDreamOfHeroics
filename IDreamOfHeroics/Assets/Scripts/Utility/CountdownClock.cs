@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CountdownClock : MonoBehaviour {
 
-	public static bool IsCompleted = false;
+    public delegate void TimeEndHandler();
+    public static event TimeEndHandler OnTimeEnd;
 
 	public int startingMinutes;
 	public int startingSeconds;
@@ -26,8 +27,12 @@ public class CountdownClock : MonoBehaviour {
 	// Update is called once per frame
 	void UpdateText () {
 		if (currentMin == 0 && currentSec == 0) {
-			IsCompleted = true;
-			return;
+            CancelInvoke();
+            if (OnTimeEnd != null)
+            {
+                OnTimeEnd();
+            }
+            return;
 		}
 		if (currentSec == 0) {
 			--currentMin;

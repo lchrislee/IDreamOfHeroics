@@ -9,8 +9,7 @@ public class RingCollision : MonoBehaviour {
 	{
 		if (!collided) {
 			collided = true;
-			RingManager.Hit ();
-			Destroy (this.gameObject);
+			LevelManager.RingHit(this.transform);
 		}
 	}
 

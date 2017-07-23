@@ -12,22 +12,21 @@ public class TextManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Invoke ("ExtendPrompt", 5f);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (CountdownClock.IsCompleted) {
-			prompt.text = "Wake up...";
-		}
-	}
-
-	void LateUpdate()
-	{
-		ringsHit.text = "Caught: " + RingManager.collidedRingCount;
-		ringsMissed.text = "Missed: " + RingManager.missedRingCount;
+		LevelManager.OnScoreUpdate += UpdateScoreText;
+        CountdownClock.OnTimeEnd += ShowEndText;
 	}
 
 	void ExtendPrompt(){
 		prompt.text = "Falling...again...";
+	}
+	
+	void ShowEndText () {
+		prompt.text = "Wake up...";
+	}
+
+	void UpdateScoreText(int caught, int missed)
+	{
+		ringsHit.text = "Caught: " + caught;
+		ringsMissed.text = "Missed: " + missed;
 	}
 }

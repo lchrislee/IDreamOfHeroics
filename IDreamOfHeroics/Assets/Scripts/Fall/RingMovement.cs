@@ -8,18 +8,15 @@ public class RingMovement : MonoBehaviour {
 	public float movementSpeed = 7f;
 	public float maxY = 3f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
 	// Update is called once per frame
 	void LateUpdate () {
-		if (transform.position.y > maxY && !markedForDeletion) {
+		if (transform.position.y > maxY && !markedForDeletion)
+        {
 			markedForDeletion = true;
-			RingManager.Miss ();
-			Destroy (this.gameObject);
-		} else if (!CountdownClock.IsCompleted){
+			LevelManager.RingMiss(this.transform);
+        } 
+        else
+        {
 			Vector3 movement = new Vector3 (0, movementSpeed, 0);
 			movement *= Time.deltaTime;
 			transform.position += movement;
