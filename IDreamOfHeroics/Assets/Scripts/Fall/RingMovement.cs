@@ -5,12 +5,13 @@ using UnityEngine;
 public class RingMovement : MonoBehaviour {
 
 	private bool markedForDeletion = false;
-	public float movementSpeed = 7f;
-	public float maxY = 3f;
+	public static float movementSpeed;
+	
+    float deletionHeight = 3f;
 
 	// Update is called once per frame
 	void LateUpdate () {
-		if (transform.position.y > maxY && !markedForDeletion)
+		if (transform.position.y > deletionHeight && !markedForDeletion)
         {
 			markedForDeletion = true;
 			LevelManager.RingMiss(this.transform);

@@ -987,7 +987,7 @@ MonoBehaviour:
   player: {fileID: 1190810665}
   ringFolder: {fileID: 578014517}
   ringPrefab: {fileID: 4006872103060966, guid: b1233310bc8cf4f61a83690f425cb72a, type: 2}
-  maxConcurrentRings: 3
+  levelData: {fileID: 11400000, guid: fcb461954ca2c45488c4dba127f054d4, type: 2}
   minPositionRange: {x: -5, y: -50, z: -2}
   maxPositionRange: {x: 5, y: -15, z: 2}
 --- !u!1 &1848194660

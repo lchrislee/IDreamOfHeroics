@@ -10,14 +10,14 @@ public class LevelManager : MonoBehaviour {
 	public Transform ringPrefab;
 
 	// Level Data
-    public int maxConcurrentRings = 3;
-	public Vector3 minPositionRange;
-	public Vector3 maxPositionRange;
-	Quaternion facingUp;
+    public FallingLevelData levelData;
 
 	// Scene Data
 	static int collidedRingCount = 0;
 	static int missedRingCount = 0;
+    public Vector3 minPositionRange;
+    public Vector3 maxPositionRange;
+    Quaternion facingUp;
 
 	// Events
 	public delegate void LevelStartHandler();
@@ -52,14 +52,18 @@ public class LevelManager : MonoBehaviour {
 
 	void SetupLevel()
 	{
-        Debug.Log("Setup level");
 		ClearRings();
+        RingMovement.movementSpeed = levelData.ringMovementSpeed;
 		player.transform.position = new Vector3(-1f, 0f, 1f);
 		
 		// Generate Rings
-		for (int i = 0; i < maxConcurrentRings; ++i) {
+        for (int i = 0; i < levelData.maxConcurrentRings; ++i) {
 			AddRing();
 		}
+
+        CountdownClock.InitializeAndStart(
+            levelData.timerMinutes, 
+            levelData.timerSeconds);
 	}
 
 	void ClearRings() {
@@ -75,6 +79,7 @@ public class LevelManager : MonoBehaviour {
 		float z = Random.Range (minPositionRange.z, maxPositionRange.z);
 		Vector3 location = new Vector3 (x, y, z);
 		Transform newRing = Instantiate (ringPrefab, location, facingUp);
+        newRing.transform.localScale *= levelData.ringScale;
 		newRing.parent = ringFolder;
 	}
 
