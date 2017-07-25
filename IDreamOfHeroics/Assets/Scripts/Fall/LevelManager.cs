@@ -112,5 +112,6 @@ public class LevelManager : MonoBehaviour {
             RingMovement movement = child.GetComponent<RingMovement>();
             movement.enabled = false;
         }
+        CountdownClock.OnTimeEnd -= EndScene;
     }
 }

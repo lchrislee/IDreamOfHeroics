@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e94fce206c6d42ba99ed09e18bed62b, type: 3}
-  m_Name: Fall Hard
+  m_Name: Fall 1
   m_EditorClassIdentifier: 
-  maxConcurrentRings: 5
-  ringScale: 0.5
-  ringSpread: 1
-  ringMovementSpeed: 5
+  maxConcurrentRings: 3
+  ringScale: 1
+  ringSpread: 0
+  ringMovementSpeed: 7
   timerMinutes: 0
-  timerSeconds: 45
+  timerSeconds: 30

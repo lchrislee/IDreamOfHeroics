@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class NightmarePlayer : MonoBehaviour {
 
-	private CharacterController cc;
-	public float speed;
+	public float speed = 10;
 
 	float xMove;
 	float zMove;
 
 	// Use this for initialization
 	void Start () {
-		cc = GetComponent<CharacterController> ();
+        transform.LookAt(Vector3.zero);
 	}
 	
 	// Update is called once per frame
@@ -21,16 +20,20 @@ public class NightmarePlayer : MonoBehaviour {
 		xMove = Input.GetAxis ("Horizontal");
 		zMove = Input.GetAxis ("Vertical");
 
-		float newXFacing = Mathf.LerpAngle (transform.forward.x, 1f, xMove);
-		float newZFacing = Mathf.LerpAngle (transform.forward.z, 1f, zMove);
-		transform.LookAt (new Vector3 (newXFacing, 0f, newZFacing));
-
-		Vector3 movement = Vector3.zero;
-		if (xMove != 0 || zMove != 0) {
-			movement.x = xMove * speed * transform.forward.x;
-			movement.z = zMove * speed * transform.forward.z;
-		}
-		movement = transform.TransformDirection (movement);
-		cc.SimpleMove (movement);
+        bool doesX = !Mathf.Approximately(xMove, 0f);
+        bool doesZ = !Mathf.Approximately(zMove, 0f);
+        if (doesX || doesZ)
+        {
+            Vector3 movement = Camera.main.transform.forward;
+            Debug.Log("Raw Movement: " + movement.ToString());
+            movement.y = 0f;
+            movement.Normalize();
+            Debug.Log("Stripped Movement: " + movement.ToString());
+            movement.x *= xMove;
+            movement.z *= zMove;
+            movement *= speed * Time.deltaTime;
+            Debug.Log("Applied Movement: " + movement.ToString());
+            transform.Translate(movement);
+        }            
 	}
 }

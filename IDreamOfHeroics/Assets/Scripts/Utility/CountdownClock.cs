@@ -9,6 +9,8 @@ public class CountdownClock : MonoBehaviour {
     public static event TimeEndHandler OnTimeEnd;
     public delegate void StartClockHandler(int minutes, int seconds);
     public static event StartClockHandler OnStartClock;
+    public delegate void TimeStopHandler();
+    public static event TimeStopHandler OnStopClock;
 
 	private Text clock;
 	private int currentMin;
@@ -17,6 +19,7 @@ public class CountdownClock : MonoBehaviour {
     void Awake()
     {
         OnStartClock += StartClock;
+        OnStopClock += StopClock;
         clock = GetComponentInParent<Text>();
     }
 
@@ -34,6 +37,20 @@ public class CountdownClock : MonoBehaviour {
         currentSec = seconds;
         SetTime ();
         InvokeRepeating ("ClockTick", 1f, 1f);
+    }
+
+    public static void RequestStopClock()
+    {
+        if (OnStopClock != null)
+        {
+            OnStopClock();
+        }
+    }
+
+    void StopClock()
+    {
+        CancelInvoke("ClockTick");
+        enabled = false;
     }
 
 	// Update is called once per frame

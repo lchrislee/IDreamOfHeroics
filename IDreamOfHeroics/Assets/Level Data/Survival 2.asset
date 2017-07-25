@@ -8,9 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e94fce206c6d42ba99ed09e18bed62b, type: 3}
-  m_Name: Fall Easy
+  m_Script: {fileID: 11500000, guid: 38ed2a4306dac4656bac11f1093e0928, type: 3}
+  m_Name: Survival 2
   m_EditorClassIdentifier: 
-  maxConcurrentRings: 3
-  ringScale: 1
-  ringSpread: 0
+  timerMinutes: 1
+  timerSeconds: 0
+  playerHp: 100
+  typeToSpawn: 0
+  respawnTime: 2

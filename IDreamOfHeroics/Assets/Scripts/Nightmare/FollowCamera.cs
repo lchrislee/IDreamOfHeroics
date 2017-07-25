@@ -10,17 +10,12 @@ public class FollowCamera : MonoBehaviour {
 	public Transform lookAt;
 	public Transform cameraTransform;
 
-	Camera camera;
-
 	float distanceToTarget = 6f;
-	float sensitivityX = 4f;
-	float sensitivityY = 1.25f;
 	float currentX;
 	float currentY;
 
 	void Start () {
 		cameraTransform = transform;
-		camera = Camera.main;
 	}
 
 	void Update()
