@@ -5,15 +5,18 @@ using UnityEngine;
 public class SurvivalLevelManager : MonoBehaviour {
 
     // Object Data
-    public SurvivalPlayer player;
+    public SurvivalCameraManager player;
     public Transform enemyFolder;
 
     // Level Data
     public SurvivalLevelData levelData;
+    public BattleClass playerClass;
 
     // Scene Data
     public SurvivalEnemySpawnManager spawnManager;
-    public SurvivalHealthManager healthManager;
+    public HealthUIManager healthManager;
+    public BattleSkillUIManager uiSkillManager;
+    public SurvivalInputManager inputManager;
 
     // Delegates and Events
     public delegate void LevelStartHandler();
@@ -43,11 +46,30 @@ public class SurvivalLevelManager : MonoBehaviour {
 
     void SetupLevel()
     {
-        int maxHp = levelData.playerHp;
-        healthManager.InitializePlayerStats(maxHp);
+        // Skills.
+        // TODO: REMOVE THIS and fill in proper skill choices from player data.
+        Object[] skills = Resources.LoadAll("Skill", typeof(Skill));
+        Skill[] chosenSkills = new Skill[2];
+        for (int i = 0; i < chosenSkills.Length; ++i)
+        {
+            chosenSkills[i] = (Skill) skills[Random.Range(0, skills.Length)];
+        }
+        uiSkillManager.InitializeAndEnable(chosenSkills);
+
+        // Input.
+        playerClass = (BattleClass) Resources.LoadAll("Battle Class", typeof(BattleClass))[1];
+        inputManager.InitializeAndMonitor(playerClass, chosenSkills);
+
+        // Health.
+        // TODO: Retain player data so I can put in the defense.
+        healthManager.InitializePlayerStats(levelData.playerHp, 0);
+
+        // Enemy.
         spawnManager.InitializeAndStartSpawning(
             levelData.typeToSpawn, 
             levelData.respawnTime);
+
+        // Clock.
         CountdownClock.InitializeAndStart(
             levelData.timerMinutes, 
             levelData.timerSeconds);

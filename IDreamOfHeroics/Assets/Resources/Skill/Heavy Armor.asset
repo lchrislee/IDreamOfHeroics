@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19666127d71cd42ae8b1f5fcb4f5e9db, type: 3}
+  m_Name: Heavy Armor
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  skillName: Heavy Armor
+  skillDescription: Enforce your armor to prevent any damage.
+  cooldownTime: 20
+  effectTime: 5
+  damage: 0
+  damageModifier: 0
+  gameObjectAffectCount: 1

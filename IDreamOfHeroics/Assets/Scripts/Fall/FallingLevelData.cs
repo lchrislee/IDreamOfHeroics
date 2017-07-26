@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Data File/Level Data/Falling Level Data")]
+[CreateAssetMenu(menuName="Level Data/Falling Level Data")]
 public class FallingLevelData : ScriptableObject {
 
     public int maxConcurrentRings;

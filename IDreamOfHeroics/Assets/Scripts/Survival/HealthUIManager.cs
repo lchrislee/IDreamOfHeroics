@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SurvivalHealthManager : MonoBehaviour {
+public class HealthUIManager : MonoBehaviour {
 
     int maxHp = 20;
     int currentHp;
+    int defense;
 
     static bool isAlive = true;
 
@@ -30,10 +31,11 @@ public class SurvivalHealthManager : MonoBehaviour {
         SetHealth();
     }
 
-    public void InitializePlayerStats(int hp)
+    public void InitializePlayerStats(int hp, int def)
     {
         maxHp = hp;
         currentHp = maxHp;
+        defense = def;
         SetHealth();
     }
 
@@ -47,9 +49,10 @@ public class SurvivalHealthManager : MonoBehaviour {
 
     public void TakeDamage(int damage)
     {
-        currentHp -= damage;
+        currentHp -= damage - defense;
         if (currentHp <= 0 && isAlive)
         {
+            currentHp = 0;
             isAlive = false;
             OnTakeDamage -= TakeDamage;
             SurvivalLevelManager.StopScene();

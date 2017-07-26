@@ -16,7 +16,7 @@ public struct LocationAndRotation
 
 public class SurvivalEnemySpawnManager : MonoBehaviour {
 
-    public SurvivalPlayer player;
+    public SurvivalCameraManager player;
     public Transform spiderPrefab;
     public Transform zombiePrefab;
 
@@ -59,14 +59,14 @@ public class SurvivalEnemySpawnManager : MonoBehaviour {
         Transform prefabToUse;
         switch (enemyTypeToUse)
         {
-            case EnemyType.Spider:
-                prefabToUse = spiderPrefab;
-                break;
             case EnemyType.Zombie:
                 prefabToUse = zombiePrefab;
                 break;
+            default:
+                prefabToUse = spiderPrefab;
+                break;
         }
-        Instantiate(spiderPrefab, spawnLocation, spawnRotation, transform);
+        Instantiate(prefabToUse, spawnLocation, spawnRotation, transform);
     }
 
     void StopSpawning()

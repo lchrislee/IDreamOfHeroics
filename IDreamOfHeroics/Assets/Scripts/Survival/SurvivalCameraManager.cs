@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurvivalPlayer : MonoBehaviour {
+public class SurvivalCameraManager : MonoBehaviour {
 
     public float hSensitivity = 30f;
     public float vSensitivity = 20f;

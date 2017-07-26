@@ -17,6 +17,7 @@ public class SurvivalEnemyAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        gameObject.layer = 9;
         OnStopAttack += StopAttack;
 	}
 	
@@ -56,7 +57,7 @@ public class SurvivalEnemyAI : MonoBehaviour {
 
     void Attack()
     {
-        SurvivalHealthManager.SignalDamage(strength);
+        HealthUIManager.SignalDamage(strength);
     }
 
     public static void DisableAttack()

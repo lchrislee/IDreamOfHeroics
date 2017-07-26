@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Data File/Level Data/Survival Level Data")]
+[CreateAssetMenu(menuName="Level Data/Survival Level Data")]
 public class SurvivalLevelData : ScriptableObject {
     public int timerMinutes = 0;
     public int timerSeconds = 30;
