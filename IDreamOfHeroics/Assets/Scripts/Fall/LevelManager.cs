@@ -37,11 +37,6 @@ public class LevelManager : MonoBehaviour {
 		facingUp.eulerAngles = new Vector3 (90, 0, 0);
 	}
 
-    // Use this for initialization
-    void Start () {
-        StartLevel();
-    }
-
 	public static void StartLevel()
 	{
 		if (OnLevelStart != null)
@@ -113,5 +108,7 @@ public class LevelManager : MonoBehaviour {
             movement.enabled = false;
         }
         CountdownClock.OnTimeEnd -= EndScene;
+        PlaySessionManager.instance
+            .LoadReality((float) collidedRingCount, (float) missedRingCount);
     }
 }
