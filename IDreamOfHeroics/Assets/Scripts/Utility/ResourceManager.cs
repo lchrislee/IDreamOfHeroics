@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceLoadManager : MonoBehaviour {
+public class ResourceManager : MonoBehaviour {
 
     public static FallingLevelData LoadFallLevel(int difficulty)
     {
@@ -14,6 +14,12 @@ public class ResourceLoadManager : MonoBehaviour {
     {
         string fileName = "Level Data/Survival/Survival " + difficulty;
         return Resources.Load<SurvivalLevelData>(fileName);
+    }
+
+    public static ChaseLevelData LoadChaseLevel(int difficulty)
+    {
+        string fileName = "Level Data/Chase/Chase " + difficulty.ToString();
+        return Resources.Load<ChaseLevelData>(fileName);
     }
 
     public static SkillData LoadSkill(string name)

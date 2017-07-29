@@ -27,7 +27,7 @@ public class RealitySkillLevelManager : MonoBehaviour {
         if (shouldShowNewSkills)
         {
             int skillTierValue = PlayerPrefsManager.LoadStageDifficulty();
-            skillTier = ResourceLoadManager.LoadSkillTier(skillTierValue);
+            skillTier = ResourceManager.LoadSkillTier(skillTierValue);
         }
     }
 

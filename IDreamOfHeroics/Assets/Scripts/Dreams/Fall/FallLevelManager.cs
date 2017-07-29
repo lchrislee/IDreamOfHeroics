@@ -50,7 +50,7 @@ public class FallLevelManager : MonoBehaviour {
     void SetupLevel(int difficulty)
 	{
         difficultyLevel = difficulty;
-        levelData = ResourceLoadManager.LoadFallLevel(difficultyLevel);
+        levelData = ResourceManager.LoadFallLevel(difficultyLevel);
 
         if (levelData == null)
         {

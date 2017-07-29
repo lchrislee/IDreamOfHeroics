@@ -57,6 +57,7 @@ public class PlaySessionManager : MonoBehaviour {
                 FallLevelManager.StartLevel(difficulty);
                 break;
             case "Chase":
+                ChaseLevelManager.StartLevel(difficulty);
                 break;
             case "Survival":
                 break;
@@ -190,7 +191,10 @@ public class PlaySessionManager : MonoBehaviour {
     {
         int motivation = PlayerPrefsManager.LoadTotalMotivation();
         int level = PlayerPrefsManager.LoadLevelNumber();
-        if (motivation > 1000 || level >= FINAL_NIGHTMARE_LEVEL)
+        if (motivation > 1000 || level >= FINAL_NIGHTMARE_LEVEL
+            && scene != SCENE_REALITY_FAILURE
+            && scene != SCENE_REALITY_SUCCESS
+        )
         {
             ShowEnd();
         }

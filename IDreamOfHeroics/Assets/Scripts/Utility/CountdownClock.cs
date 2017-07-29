@@ -79,4 +79,14 @@ public class CountdownClock : MonoBehaviour {
 			clock.color = Color.red;
 		}
 	}
+
+    public int GetRemainingMin()
+    {
+        return currentMin;
+    }
+
+    public int GetRemainingSec()
+    {
+        return currentSec;
+    }
 }

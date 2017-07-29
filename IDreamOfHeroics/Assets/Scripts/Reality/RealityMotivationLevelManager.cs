@@ -14,8 +14,8 @@ public class RealityMotivationLevelManager : MonoBehaviour {
         int old = PlayerPrefsManager.LoadTotalMotivation();
         oldMotivation.text = old.ToString();
         int add = PlayerPrefsManager.LoadMotivationGain();;
-        addMotivation.text = add.ToString();
-        totalMotivation.text = "+" + (old + add).ToString();
+        addMotivation.text = "+ " + add.ToString();
+        totalMotivation.text = (old + add).ToString();
         PlayerPrefsManager.SaveMotivationGain(add);
         PlayerPrefsManager.IncreaseLevelNumber();
 	}

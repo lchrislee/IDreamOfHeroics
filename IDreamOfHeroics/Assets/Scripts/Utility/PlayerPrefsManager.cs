@@ -134,19 +134,19 @@ public class PlayerPrefsManager : MonoBehaviour {
     public static SkillData LoadSkillA()
     {
         string name = PlayerPrefs.GetString(SKILL_A);
-        return ResourceLoadManager.LoadSkill(name);
+        return ResourceManager.LoadSkill(name);
     }
 
     public static SkillData LoadSkillB()
     {
         string name = PlayerPrefs.GetString(SKILL_B);
-        return ResourceLoadManager.LoadSkill(name);
+        return ResourceManager.LoadSkill(name);
     }
 
     public static SkillData LoadSkillC()
     {
         string name = PlayerPrefs.GetString(SKILL_C);
-        return ResourceLoadManager.LoadSkill(name);
+        return ResourceManager.LoadSkill(name);
     }
 
     // Class
