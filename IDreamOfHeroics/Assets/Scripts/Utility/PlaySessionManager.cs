@@ -16,6 +16,8 @@ public class PlaySessionManager : MonoBehaviour {
     public const int SCENE_REALITY_FAILURE = 8;
     public const int SCENE_REALITY_START = 9;
 
+    public const int FINAL_NIGHTMARE_LEVEL = 16;
+
     public static PlaySessionManager instance;
 
     void Awake()
@@ -72,6 +74,7 @@ public class PlaySessionManager : MonoBehaviour {
         }
     }
 
+    // For use by Fall.
     public void CompleteDream(float hit, float miss)
     {
         if (Mathf.Approximately(hit, 0f) && Mathf.Approximately(miss, 0f))
@@ -93,8 +96,64 @@ public class PlaySessionManager : MonoBehaviour {
         motivationGainMultiplier *= 100f;
 
         float motivationGain = hit * motivationGainMultiplier / (hit + miss);
-        int finalGain = Mathf.FloorToInt(motivationGain);
+        UpdateMotivationReality(motivationGain);
+    }
 
+    // For use by Chase.
+    public void CompleteDream(
+                                bool didExit, 
+                                int secondsLeft, 
+                                int secondsTotal, 
+                                float progress
+                             )
+    {
+        float motivationGainMultiplier = 1f;
+        if (!didExit)
+        {
+            motivationGainMultiplier = 0.5f;
+        }
+        else if (secondsLeft > (secondsTotal / 2))
+        {
+            motivationGainMultiplier = 1.5f;
+        }
+        float motivationGain = 200f;
+        motivationGain *= progress * motivationGainMultiplier;
+        UpdateMotivationReality(motivationGain);
+    }
+
+    // For use by Survival.
+    public void CompleteDream(bool didWin, int killCount)
+    {
+        float motivationGainMultiplier = 1f;
+        if (!didWin)
+        {
+            motivationGainMultiplier = 0.5f;
+        }
+        else if (killCount > 20)
+        {
+            motivationGainMultiplier = 1.5f;
+        }
+        float motivationGain = 200f;
+        motivationGain *= motivationGainMultiplier;
+        UpdateMotivationReality(motivationGain);
+    }
+
+    // For use by Nightmare.
+    public void CompleteDream(bool didWin)
+    {
+        float motivationGainMultiplier = 1f;
+        if (!didWin)
+        {
+            motivationGainMultiplier = 0.5f;
+        }
+        float motivationGain = 200;
+        motivationGain *= motivationGainMultiplier;
+        UpdateMotivationReality(motivationGain);
+    }
+
+    void UpdateMotivationReality(float motivation)
+    {
+        int finalGain = Mathf.FloorToInt(motivation);
         PlayerPrefsManager.SaveMotivationGain(finalGain);
         ShowReality(SCENE_REALITY_MOTIVATION);
     }
@@ -129,6 +188,28 @@ public class PlaySessionManager : MonoBehaviour {
 
     public void ShowReality(int scene)
     {
-        SceneManager.LoadScene(scene);
+        int motivation = PlayerPrefsManager.LoadTotalMotivation();
+        int level = PlayerPrefsManager.LoadLevelNumber();
+        if (motivation > 1000 || level >= FINAL_NIGHTMARE_LEVEL)
+        {
+            ShowEnd();
+        }
+        else
+        {
+            SceneManager.LoadScene(scene);
+        }
+    }
+
+    public void ShowEnd()
+    {
+        int motivation = PlayerPrefsManager.LoadTotalMotivation();
+        if (motivation < 500)
+        {
+            ShowReality(SCENE_REALITY_FAILURE);
+        }
+        else
+        {
+            ShowReality(SCENE_REALITY_SUCCESS);
+        }
     }
 }
