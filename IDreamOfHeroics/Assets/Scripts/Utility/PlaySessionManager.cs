@@ -69,6 +69,6 @@ public class PlaySessionManager : MonoBehaviour {
         int finalGain = Mathf.FloorToInt(motivationGain);
 
         PlayerPrefsManager.SaveMotivationGain(finalGain);
-        SceneManager.LoadScene(MENU_SCENE);
+        SceneManager.LoadScene(REALITY_MOTIVATION_SCENE);
     }
 }

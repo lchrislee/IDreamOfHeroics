@@ -7,6 +7,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     public const string TOTAL_MOTIVATION = "TOTAL_MOTIVATION";
     public const string STAGE_DIFFICULTY = "STAGE_DIFFICULTY";
     public const string SELECTED_CLASS = "SELECTED_CLASS";
+    public const string LEVEL_NUMBER = "LEVEL_NUMBER";
 
     // Motivation
 
@@ -30,6 +31,18 @@ public class PlayerPrefsManager : MonoBehaviour {
     public static int LoadTotalMotivation()
     {
         return PlayerPrefs.GetInt(TOTAL_MOTIVATION, 0);
+    }
+
+    // Level
+
+    public static void IncreaseLevelNumber()
+    {
+        PlayerPrefs.SetInt(LEVEL_NUMBER, LoadLevelNumber() + 1);
+    }
+
+    public static int LoadLevelNumber()
+    {
+        return PlayerPrefs.GetInt(LEVEL_NUMBER, 1);
     }
 
     // Skills
