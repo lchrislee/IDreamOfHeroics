@@ -20,3 +20,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nightmare.unity
     guid: fc40eef57da3e444b9d20fda220af865
+  - enabled: 1
+    path: Assets/Scenes/RealityMotivation.unity
+    guid: e6ef6dfd7e9da41dc84d1ff4214ace32
+  - enabled: 1
+    path: Assets/Scenes/RealitySkill.unity
+    guid: 8a75516239f6942df937bcaf782f1d5a
+  - enabled: 1
+    path: Assets/Scenes/RealitySuccess.unity
+    guid: 102f82229ba8f41b2af54bbb12de543f
+  - enabled: 1
+    path: Assets/Scenes/RealityFail.unity
+    guid: a1791f76bafa346e2bb9e4192b38ee2f

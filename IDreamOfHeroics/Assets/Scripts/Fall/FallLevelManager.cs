@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour {
+public class FallLevelManager : MonoBehaviour {
 
 	// Objects
 	public FallingPlayer player;
@@ -10,9 +10,10 @@ public class LevelManager : MonoBehaviour {
 	public Transform ringPrefab;
 
 	// Level Data
-    public FallingLevelData levelData;
+    FallingLevelData levelData;
 
 	// Scene Data
+    int difficultyLevel;
 	static int collidedRingCount = 0;
 	static int missedRingCount = 0;
     public Vector3 minPositionRange;
@@ -20,7 +21,7 @@ public class LevelManager : MonoBehaviour {
     Quaternion facingUp;
 
 	// Events
-	public delegate void LevelStartHandler();
+    public delegate void LevelStartHandler(int difficulty);
 	public static event LevelStartHandler OnLevelStart;
 	public delegate void UpdateScoreHandler(int caught, int missed);
 	public static event UpdateScoreHandler OnScoreUpdate;
@@ -29,7 +30,8 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake()
 	{
-		OnLevelStart += SetupLevel; // Establish that SetupLevel is an OnLevelStart handler that receives the event.
+        // Establish SetupLevel as a OnLevelStart handler that receives event.
+		OnLevelStart += SetupLevel;
         OnRingDestroyed += AddRing;
         CountdownClock.OnTimeEnd += EndScene;
 
@@ -37,16 +39,24 @@ public class LevelManager : MonoBehaviour {
 		facingUp.eulerAngles = new Vector3 (90, 0, 0);
 	}
 
-	public static void StartLevel()
+    public static void StartLevel(int difficulty)
 	{
 		if (OnLevelStart != null)
 		{
-			OnLevelStart();
+			OnLevelStart(difficulty);
 		}
 	}
 
-	void SetupLevel()
+    void SetupLevel(int difficulty)
 	{
+        difficultyLevel = difficulty;
+        levelData = ResourceLoadManager.LoadFallLevel(difficultyLevel);
+
+        if (levelData == null)
+        {
+            PlaySessionManager.instance.LoadReality(0, 0);
+            return;
+        }
 		ClearRings();
         RingMovement.movementSpeed = levelData.ringMovementSpeed;
 		player.transform.position = new Vector3(-1f, 0f, 1f);

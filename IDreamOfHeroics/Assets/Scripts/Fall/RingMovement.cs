@@ -14,7 +14,7 @@ public class RingMovement : MonoBehaviour {
 		if (transform.position.y > deletionHeight && !markedForDeletion)
         {
 			markedForDeletion = true;
-			LevelManager.RingMiss(this.transform);
+			FallLevelManager.RingMiss(this.transform);
         } 
         else
         {

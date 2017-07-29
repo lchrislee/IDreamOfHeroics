@@ -9,13 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19666127d71cd42ae8b1f5fcb4f5e9db, type: 3}
-  m_Name: Fire Ring
+  m_Name: Cleave
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  skillName: Fire Ring
-  skillDescription: Create a ring of fire to burn enemies.
-  cooldownTime: 20
-  effectTime: 5
-  damage: 5
+  skillName: Strong Cleave
+  skillDescription: Cleave through your enemies in one swoop.
+  cooldownTime: 15
+  effectTime: 0
+  damage: 30
   damageModifier: 0
-  gameObjectAffectCount: 1
+  gameObjectAffectCount: 0
+  skillTier: 2
+  owningClass: {fileID: 11400000, guid: eb6260860a33e40eda4686c2261842bf, type: 2}

@@ -19,3 +19,5 @@ MonoBehaviour:
   damage: 0
   damageModifier: 0
   gameObjectAffectCount: 0
+  skillTier: 1
+  owningClass: {fileID: 11400000, guid: 1c0826f0565ba45c1989c5f15a9a700e, type: 2}

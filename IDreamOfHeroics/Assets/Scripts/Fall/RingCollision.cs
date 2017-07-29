@@ -9,7 +9,7 @@ public class RingCollision : MonoBehaviour {
 	{
 		if (!collided) {
 			collided = true;
-			LevelManager.RingHit(this.transform);
+			FallLevelManager.RingHit(this.transform);
 		}
 	}
 

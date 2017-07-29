@@ -6,7 +6,7 @@ public class SurvivalInputManager : MonoBehaviour {
 
     public Transform crosshair;
 
-    Skill[] skills;
+    SkillData[] skills;
     float[] cooldownCount;
     BattleClass playerClass;
     bool canPrimary = true;
@@ -14,7 +14,7 @@ public class SurvivalInputManager : MonoBehaviour {
 
     public void InitializeAndMonitor(
         BattleClass classToUse, 
-        Skill[] skillsToUse
+        SkillData[] skillsToUse
     )
     {
         playerClass = classToUse;

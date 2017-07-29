@@ -12,7 +12,7 @@ public class TextManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Invoke ("ExtendPrompt", 5f);
-		LevelManager.OnScoreUpdate += UpdateScoreText;
+		FallLevelManager.OnScoreUpdate += UpdateScoreText;
         CountdownClock.OnTimeEnd += ShowEndText;
 	}
 

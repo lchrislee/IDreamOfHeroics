@@ -976,7 +976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1833045578}
   - component: {fileID: 1833045580}
-  - component: {fileID: 1833045581}
+  - component: {fileID: 1833045579}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1001,6 +1001,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1833045579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833045577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e348f6eaf6340eaba03a121903a5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1190810665}
+  ringFolder: {fileID: 578014517}
+  ringPrefab: {fileID: 4006872103060966, guid: b1233310bc8cf4f61a83690f425cb72a, type: 2}
+  minPositionRange: {x: -5, y: -50, z: -2}
+  maxPositionRange: {x: 5, y: -15, z: 2}
 --- !u!114 &1833045580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1015,23 +1031,6 @@ MonoBehaviour:
   prompt: {fileID: 1021585284}
   ringsHit: {fileID: 2069506778}
   ringsMissed: {fileID: 1848194662}
---- !u!114 &1833045581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833045577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5d1ee9fffbb4280902fdc031f75590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1190810665}
-  ringFolder: {fileID: 578014517}
-  ringPrefab: {fileID: 4006872103060966, guid: b1233310bc8cf4f61a83690f425cb72a, type: 2}
-  levelData: {fileID: 11400000, guid: fcb461954ca2c45488c4dba127f054d4, type: 2}
-  minPositionRange: {x: -5, y: -50, z: -2}
-  maxPositionRange: {x: 5, y: -15, z: 2}
 --- !u!1 &1848194660
 GameObject:
   m_ObjectHideFlags: 0

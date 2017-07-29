@@ -48,11 +48,11 @@ public class SurvivalLevelManager : MonoBehaviour {
     {
         // Skills.
         // TODO: REMOVE THIS and fill in proper skill choices from player data.
-        Object[] skills = Resources.LoadAll("Skill", typeof(Skill));
-        Skill[] chosenSkills = new Skill[2];
+        Object[] skills = Resources.LoadAll("Skill", typeof(SkillData));
+        SkillData[] chosenSkills = new SkillData[2];
         for (int i = 0; i < chosenSkills.Length; ++i)
         {
-            chosenSkills[i] = (Skill) skills[Random.Range(0, skills.Length)];
+            chosenSkills[i] = (SkillData) skills[Random.Range(0, skills.Length)];
         }
         uiSkillManager.InitializeAndEnable(chosenSkills);
 

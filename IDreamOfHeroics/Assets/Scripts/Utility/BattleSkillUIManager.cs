@@ -7,7 +7,7 @@ public class BattleSkillUIManager : MonoBehaviour {
     public delegate void UseSkillHandler(int skillNumber);
     public static event UseSkillHandler OnUseSkill;
 
-    Skill[] skills;
+    SkillData[] skills;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class BattleSkillUIManager : MonoBehaviour {
         
 	}
         
-    public void InitializeAndEnable(Skill[] skillsToUse)
+    public void InitializeAndEnable(SkillData[] skillsToUse)
     {
         skills = skillsToUse;
         for (int i = skillsToUse.Length; i < 3; ++i)

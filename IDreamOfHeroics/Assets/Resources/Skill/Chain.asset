@@ -9,13 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19666127d71cd42ae8b1f5fcb4f5e9db, type: 3}
-  m_Name: Invisibility
+  m_Name: Chain
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  skillName: Invisibility
-  skillDescription: Hide from your foes before you strike.
-  cooldownTime: 20
-  effectTime: 5
-  damage: 0
+  skillName: Chain Lightning
+  skillDescription: Shoot lightning into your foes.
+  cooldownTime: 30
+  effectTime: 0
+  damage: 10
   damageModifier: 0
-  gameObjectAffectCount: 1
+  gameObjectAffectCount: 3
+  skillTier: 3
+  owningClass: {fileID: 11400000, guid: 1c0826f0565ba45c1989c5f15a9a700e, type: 2}
