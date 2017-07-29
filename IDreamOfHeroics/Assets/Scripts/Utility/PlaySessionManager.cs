@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlaySessionManager : MonoBehaviour {
 
-    public const int MENU_SCENE = 0;
-    public const int FALL_SCENE = 1;
-    public const int CHASE_SCENE = 2;
-    public const int SURVIVAL_SCENE = 3;
-    public const int NIGHTMARE_SCENE = 4;
-    public const int REALITY_MOTIVATION_SCENE = 5;
-    public const int REALITY_SKILL_SCENE = 6;
-    public const int REALITY_SUCCESS_SCENE = 7;
-    public const int REALITY_FAIL_SCENE = 8;
+    public const int SCENE_MENU = 0;
+    public const int SCENE_FALL = 1;
+    public const int SCENE_CHASE = 2;
+    public const int SCENE_SURVIVAL = 3;
+    public const int SCENE_NIGHTMARE = 4;
+    public const int SCENE_REALITY_MOTIVATION = 5;
+    public const int SCENE_REALITY_SKILL = 6;
+    public const int SCENE_REALITY_SUCCESS = 7;
+    public const int SCENE_REALITY_FAILURE = 8;
+    public const int SCENE_REALITY_START = 9;
 
     public static PlaySessionManager instance;
 
@@ -38,19 +39,45 @@ public class PlaySessionManager : MonoBehaviour {
 
     void OnSceneLoad(Scene s, LoadSceneMode mode)
     {
-        if (s.name == "Fall")
+        int difficulty = PlayerPrefsManager.LoadStageDifficulty();
+        switch (s.name)
         {
-            int difficulty = PlayerPrefsManager.LoadStageDifficulty();
-            FallLevelManager.StartLevel(difficulty);
+            case "MainMenu":
+                break;
+            case "RealityStart":
+                PlayerPrefsManager.ResetLevelNumber();
+                PlayerPrefsManager.ResetMotivationGain();
+                PlayerPrefsManager.ResetSkillCount();
+                PlayerPrefsManager.ResetStageDifficulty();
+                PlayerPrefsManager.ResetTotalMotivation();
+                break;
+            case "Fall":
+                FallLevelManager.StartLevel(difficulty);
+                break;
+            case "Chase":
+                break;
+            case "Survival":
+                break;
+            case "Nightmare":
+                break;
+            case "RealityMotivation":
+                PlayerPrefsManager.IncreaseLevelNumber();
+                break;
+            case "RealitySkill":
+                break;
+            case "RealitySuccess":
+                break;
+            case "RealityFail":
+                break;
         }
     }
 
-    public void LoadReality(float hit, float miss)
+    public void CompleteDream(float hit, float miss)
     {
         if (Mathf.Approximately(hit, 0f) && Mathf.Approximately(miss, 0f))
         {
             Debug.LogError("Could not load level.");
-            SceneManager.LoadScene(MENU_SCENE);
+            SceneManager.LoadScene(SCENE_MENU);
             return;
         }
 
@@ -69,6 +96,39 @@ public class PlaySessionManager : MonoBehaviour {
         int finalGain = Mathf.FloorToInt(motivationGain);
 
         PlayerPrefsManager.SaveMotivationGain(finalGain);
-        SceneManager.LoadScene(REALITY_MOTIVATION_SCENE);
+        ShowReality(SCENE_REALITY_MOTIVATION);
+    }
+
+    public void ShowNextDream()
+    {
+        int levelNumber = PlayerPrefsManager.LoadLevelNumber();
+        if (levelNumber < 4)
+        {
+            switch (levelNumber)
+            {
+                case 1:
+                    SceneManager.LoadScene(SCENE_FALL);
+                    break;
+                case 2:
+                    SceneManager.LoadScene(SCENE_CHASE);
+                    break;
+                case 3:
+                    SceneManager.LoadScene(SCENE_SURVIVAL);
+                    break;
+            }
+        }
+        else if (levelNumber % 4 == 0)
+        {
+            SceneManager.LoadScene(SCENE_NIGHTMARE);
+        }
+        else
+        {
+            
+        }
+    }
+
+    public void ShowReality(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

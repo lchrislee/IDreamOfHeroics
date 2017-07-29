@@ -54,7 +54,7 @@ public class FallLevelManager : MonoBehaviour {
 
         if (levelData == null)
         {
-            PlaySessionManager.instance.LoadReality(0, 0);
+            PlaySessionManager.instance.CompleteDream(0, 0);
             return;
         }
 		ClearRings();
@@ -119,6 +119,6 @@ public class FallLevelManager : MonoBehaviour {
         }
         CountdownClock.OnTimeEnd -= EndScene;
         PlaySessionManager.instance
-            .LoadReality((float) collidedRingCount, (float) missedRingCount);
+            .CompleteDream((float) collidedRingCount, (float) missedRingCount);
     }
 }

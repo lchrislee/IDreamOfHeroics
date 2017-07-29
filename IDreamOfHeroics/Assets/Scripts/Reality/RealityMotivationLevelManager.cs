@@ -19,4 +19,10 @@ public class RealityMotivationLevelManager : MonoBehaviour {
         PlayerPrefsManager.SaveMotivationGain(add);
         PlayerPrefsManager.IncreaseLevelNumber();
 	}
+
+    public void CompleteLevel()
+    {
+        PlaySessionManager.instance.ShowReality(
+            PlaySessionManager.SCENE_REALITY_SKILL);
+    }
 }

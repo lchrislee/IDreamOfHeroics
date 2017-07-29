@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 233051229}
   - component: {fileID: 233051228}
   - component: {fileID: 233051227}
-  - component: {fileID: 233051226}
   m_Layer: 5
   m_Name: RealityMotivation
   m_TagString: Untagged
@@ -373,17 +372,6 @@ RectTransform:
   m_AnchoredPosition: {x: 384, y: -215.77145}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &233051226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 233051224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &233051227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,8 +411,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 233051226}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -628,7 +616,6 @@ GameObject:
   - component: {fileID: 509772880}
   - component: {fileID: 509772879}
   - component: {fileID: 509772878}
-  - component: {fileID: 509772877}
   m_Layer: 5
   m_Name: RealityFail
   m_TagString: Untagged
@@ -655,17 +642,6 @@ RectTransform:
   m_AnchoredPosition: {x: 192, y: -379.77145}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &509772877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 509772875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &509772878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,8 +681,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509772877}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -762,7 +738,6 @@ GameObject:
   - component: {fileID: 574559716}
   - component: {fileID: 574559715}
   - component: {fileID: 574559714}
-  - component: {fileID: 574559713}
   m_Layer: 5
   m_Name: RealitySkill
   m_TagString: Untagged
@@ -789,17 +764,6 @@ RectTransform:
   m_AnchoredPosition: {x: 576, y: -215.77145}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &574559713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 574559711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &574559714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,8 +803,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574559713}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1239,7 +1203,6 @@ GameObject:
   - component: {fileID: 832843573}
   - component: {fileID: 832843572}
   - component: {fileID: 832843571}
-  - component: {fileID: 832843574}
   m_Layer: 5
   m_Name: CampaignButton
   m_TagString: Untagged
@@ -1304,7 +1267,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 832843572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: NewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &832843572
@@ -1340,17 +1314,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832843569}
---- !u!114 &832843574
+--- !u!1 &862166843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 862166845}
+  - component: {fileID: 862166844}
+  m_Layer: 0
+  m_Name: PlaySessionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &862166844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 832843569}
+  m_GameObject: {fileID: 862166843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
+  m_Script: {fileID: 11500000, guid: 5111343da9bac4831b2a50881521e668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &862166845
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862166843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 60, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974202372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1365,6 @@ GameObject:
   - component: {fileID: 974202377}
   - component: {fileID: 974202376}
   - component: {fileID: 974202375}
-  - component: {fileID: 974202374}
   m_Layer: 5
   m_Name: SurviveDreamButton
   m_TagString: Untagged
@@ -1389,17 +1391,6 @@ RectTransform:
   m_AnchoredPosition: {x: 768, y: -51.771454}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &974202374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 974202372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &974202375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,8 +1430,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974202374}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1496,7 +1487,6 @@ GameObject:
   - component: {fileID: 993234456}
   - component: {fileID: 993234455}
   - component: {fileID: 993234454}
-  - component: {fileID: 993234453}
   m_Layer: 5
   m_Name: ChaseDreamButon
   m_TagString: Untagged
@@ -1523,17 +1513,6 @@ RectTransform:
   m_AnchoredPosition: {x: 576, y: -51.771454}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &993234453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 993234451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &993234454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,8 +1552,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 993234453}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1912,7 +1891,6 @@ GameObject:
   - component: {fileID: 1244296878}
   - component: {fileID: 1244296877}
   - component: {fileID: 1244296876}
-  - component: {fileID: 1244296875}
   m_Layer: 5
   m_Name: FallDreamButton
   m_TagString: Untagged
@@ -1939,17 +1917,6 @@ RectTransform:
   m_AnchoredPosition: {x: 384, y: -51.771454}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1244296875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1244296873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1244296876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,8 +1956,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1244296875}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2035,6 +2002,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244296873}
+--- !u!1 &1297347343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1297347345}
+  - component: {fileID: 1297347344}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1297347344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297347343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db6847bfa2be4dc3a3f1c3743f511d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugButton: {fileID: 796264361}
+--- !u!4 &1297347345
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297347343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 60, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359879390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2054,6 @@ GameObject:
   - component: {fileID: 1359879395}
   - component: {fileID: 1359879394}
   - component: {fileID: 1359879393}
-  - component: {fileID: 1359879392}
   m_Layer: 5
   m_Name: RealitySuccess
   m_TagString: Untagged
@@ -2073,17 +2080,6 @@ RectTransform:
   m_AnchoredPosition: {x: 768, y: -215.77145}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1359879392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359879390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1359879393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2123,8 +2119,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1359879392}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2254,7 +2250,6 @@ GameObject:
   - component: {fileID: 1404851095}
   - component: {fileID: 1404851094}
   - component: {fileID: 1404851093}
-  - component: {fileID: 1404851092}
   m_Layer: 5
   m_Name: NightmareDreamButton
   m_TagString: Untagged
@@ -2281,17 +2276,6 @@ RectTransform:
   m_AnchoredPosition: {x: 192, y: -215.77145}
   m_SizeDelta: {x: 128, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1404851092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1404851090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd3a67036d5546ffbbb2a3fac8ec072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1404851093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2331,8 +2315,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1404851092}
-        m_MethodName: LoadByIndex
+      - m_Target: {fileID: 1297347344}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2856,7 +2840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0.2}
   m_AnchorMax: {x: 0.75, y: 0.6}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.0000076293945}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955938015
