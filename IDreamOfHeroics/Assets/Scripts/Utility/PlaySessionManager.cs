@@ -212,4 +212,9 @@ public class PlaySessionManager : MonoBehaviour {
             ShowReality(SCENE_REALITY_SUCCESS);
         }
     }
+
+    public void ShowMainMenu()
+    {
+        SceneManager.LoadScene(SCENE_MENU);
+    }
 }
