@@ -11,7 +11,7 @@ public class ChaseGoal : MonoBehaviour {
         if (!didSend)
         {
             didSend = true;
-            ChaseLevelManager.StopScene();
+            ChaseLevelManager.CompleteScene();
         }
     }
 }

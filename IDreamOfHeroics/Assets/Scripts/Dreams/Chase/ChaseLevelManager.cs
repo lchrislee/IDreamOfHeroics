@@ -15,7 +15,6 @@ public class ChaseLevelManager : MonoBehaviour {
 
     // Scene Data
     int difficultyLevel;
-    bool didComplete;
     float levelProgress = 0f;
     Vector2 goalPosition;
     Vector2 originalPosition;
@@ -26,7 +25,7 @@ public class ChaseLevelManager : MonoBehaviour {
     public static event LevelStartHandler OnLevelStart;
     public delegate void LevelProgressHandler();
     public static event LevelProgressHandler OnLevelProgress;
-    public delegate void LevelEndHandler();
+    public delegate void LevelEndHandler(bool completed);
     public static event LevelEndHandler OnLevelEnd;
 
 
@@ -35,7 +34,7 @@ public class ChaseLevelManager : MonoBehaviour {
         CountdownClock.OnTimeEnd += EndScene;
         OnLevelStart += SetupLevel;
         OnLevelProgress += LevelProgress;
-        OnLevelEnd += EndScene;
+        OnLevelEnd += CompleteAndEnd;
     }
 
     public static void StartLevel(int difficulty)
@@ -100,22 +99,35 @@ public class ChaseLevelManager : MonoBehaviour {
         levelProgress /= originalDistance;
     }
 
+    public static void CompleteScene()
+    {
+        if (OnLevelEnd != null)
+        {
+            OnLevelEnd(true);
+        }
+    }
+
     public static void StopScene()
     {
         if (OnLevelEnd != null)
         {
-            OnLevelEnd();
+            OnLevelEnd(false);
         }
     }
 
     void EndScene()
+    {
+        CompleteAndEnd(false);
+    }
+
+    void CompleteAndEnd(bool completed)
     {
         CountdownClock.RequestStopClock();
         CountdownClock.OnTimeEnd -= EndScene;
         player.CancelInvoke();
         player.enabled = false;
         PlaySessionManager.instance.CompleteDream(
-            didComplete, 
+            completed,
             clock.GetRemainingMin() * 60 + clock.GetRemainingSec(),
             levelData.timerMinutes * 60 + levelData.timerSeconds,
             levelProgress
