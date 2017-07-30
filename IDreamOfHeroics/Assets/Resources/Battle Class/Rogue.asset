@@ -18,3 +18,4 @@ MonoBehaviour:
   canMelee: 1
   attackCooldown: 0.5
   attackDamage: 2
+  type: 2

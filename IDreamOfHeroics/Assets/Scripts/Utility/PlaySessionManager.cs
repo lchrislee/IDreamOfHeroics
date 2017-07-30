@@ -15,6 +15,7 @@ public class PlaySessionManager : MonoBehaviour {
     public const int SCENE_REALITY_SUCCESS = 7;
     public const int SCENE_REALITY_FAILURE = 8;
     public const int SCENE_REALITY_START = 9;
+    public const int SCENE_REALITY_CLASS = 10;
 
     public const int FINAL_NIGHTMARE_LEVEL = 16;
 
@@ -25,33 +26,31 @@ public class PlaySessionManager : MonoBehaviour {
         if (instance == null)
         {
             instance = this;
+            SceneManager.sceneLoaded += OnSceneLoad;
             DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
-        SceneManager.sceneLoaded += OnSceneLoad;
     }
         
     public void LoadScene(int sceneIndex)
     {
+        Debug.Log("Bad load into scene: " + sceneIndex.ToString());
         SceneManager.LoadScene (sceneIndex);
     }
 
     void OnSceneLoad(Scene s, LoadSceneMode mode)
     {
+        Debug.Log("Loaded scene: " + s.name);
         int difficulty = PlayerPrefsManager.LoadStageDifficulty();
+        Debug.Log("difficulty: " + difficulty.ToString());
         switch (s.name)
         {
             case "MainMenu":
                 break;
             case "RealityStart":
-                PlayerPrefsManager.ResetLevelNumber();
-                PlayerPrefsManager.ResetMotivationGain();
-                PlayerPrefsManager.ResetSkillCount();
-                PlayerPrefsManager.ResetStageDifficulty();
-                PlayerPrefsManager.ResetTotalMotivation();
                 break;
             case "Fall":
                 FallLevelManager.StartLevel(difficulty);
@@ -64,9 +63,11 @@ public class PlaySessionManager : MonoBehaviour {
             case "Nightmare":
                 break;
             case "RealityMotivation":
-                PlayerPrefsManager.IncreaseLevelNumber();
                 break;
             case "RealitySkill":
+                break;
+            case "RealityClass":
+                PlayerPrefsManager.IncreaseLevelNumber();
                 break;
             case "RealitySuccess":
                 break;
@@ -162,6 +163,7 @@ public class PlaySessionManager : MonoBehaviour {
     public void ShowNextDream()
     {
         int levelNumber = PlayerPrefsManager.LoadLevelNumber();
+        Debug.Log("show next dream with level " + levelNumber.ToString());
         if (levelNumber < 4)
         {
             switch (levelNumber)
@@ -191,6 +193,7 @@ public class PlaySessionManager : MonoBehaviour {
     {
         int motivation = PlayerPrefsManager.LoadTotalMotivation();
         int level = PlayerPrefsManager.LoadLevelNumber();
+
         if ((motivation > 1000 || level >= FINAL_NIGHTMARE_LEVEL)
             && scene != SCENE_REALITY_FAILURE
             && scene != SCENE_REALITY_SUCCESS
@@ -202,6 +205,16 @@ public class PlaySessionManager : MonoBehaviour {
         {
             SceneManager.LoadScene(scene);
         }
+    }
+
+    public void ShowStart()
+    {
+        PlayerPrefsManager.ResetLevelNumber();
+        PlayerPrefsManager.ResetMotivationGain();
+        PlayerPrefsManager.ResetSkillCount();
+        PlayerPrefsManager.ResetStageDifficulty();
+        PlayerPrefsManager.ResetTotalMotivation();
+        ShowReality(SCENE_REALITY_START);
     }
 
     public void ShowEnd()

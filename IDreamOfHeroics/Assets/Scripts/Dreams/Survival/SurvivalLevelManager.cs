@@ -47,22 +47,17 @@ public class SurvivalLevelManager : MonoBehaviour {
     void SetupLevel()
     {
         // Skills.
-        // TODO: REMOVE THIS and fill in proper skill choices from player data.
-        Object[] skills = Resources.LoadAll("Skill", typeof(SkillData));
-        SkillData[] chosenSkills = new SkillData[2];
-        for (int i = 0; i < chosenSkills.Length; ++i)
-        {
-            chosenSkills[i] = (SkillData) skills[Random.Range(0, skills.Length)];
-        }
+        SkillData[] chosenSkills = PlayerPrefsManager.LoadPlayerSkills();
         uiSkillManager.InitializeAndEnable(chosenSkills);
 
         // Input.
-        playerClass = (BattleClass) Resources.LoadAll("Battle Class", typeof(BattleClass))[1];
+        BattleClassType typeToUse = PlayerPrefsManager.LoadSelectedClass();
+        playerClass = ResourceManager.LoadBattleClass(typeToUse);
+        Debug.Log("class selected: " + playerClass.className);
         inputManager.InitializeAndMonitor(playerClass, chosenSkills);
 
         // Health.
-        // TODO: Retain player data so I can put in the defense.
-        healthManager.InitializePlayerStats(levelData.playerHp, 0);
+        healthManager.InitializeStats(levelData.playerHp, playerClass.def);
 
         // Enemy.
         spawnManager.InitializeAndStartSpawning(

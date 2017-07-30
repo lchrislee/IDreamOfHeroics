@@ -151,7 +151,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     // Class
 
-    public static void SaveSelectedClass(BattleClassType typeToSave)
+    public static void SavePlayerClass(BattleClassType typeToSave)
     {
         PlayerPrefs.SetInt(
             SELECTED_CLASS, 
@@ -161,7 +161,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     public static BattleClassType LoadSelectedClass()
     {
-        return BattleClass.GetTypeFromInt(PlayerPrefs.GetInt(SELECTED_CLASS));
+        return BattleClass.GetTypeFromInt(PlayerPrefs.GetInt(SELECTED_CLASS, 1));
     }
 
     // Difficulty

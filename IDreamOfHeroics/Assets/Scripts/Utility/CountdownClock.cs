@@ -15,6 +15,7 @@ public class CountdownClock : MonoBehaviour {
 	private Text clock;
 	private int currentMin;
 	private int currentSec;
+    bool started = false;
 
     void Awake()
     {
@@ -35,7 +36,7 @@ public class CountdownClock : MonoBehaviour {
     {
         currentMin = minutes;
         currentSec = seconds;
-        SetTime ();
+        started = true;
         InvokeRepeating ("ClockTick", 1f, 1f);
     }
 
@@ -69,13 +70,26 @@ public class CountdownClock : MonoBehaviour {
 		} else {
 			--currentSec;
 		}
-		SetTime ();
 	}
+
+    void Update()
+    {
+        if (started)
+        {
+            SetTime();
+        }
+    }
+
+    void OnDestroy()
+    {
+        OnStartClock -= StartClock;
+        OnStopClock -= StopClock;
+    }
 
 	void SetTime()
 	{
 		clock.text = System.String.Format("{0}:{1}", currentMin.ToString ("D2"), currentSec.ToString ("D2"));
-		if (currentMin == 0 && currentSec <= 10) {
+		if (currentMin == 0 && currentSec <= 15) {
 			clock.color = Color.red;
 		}
 	}

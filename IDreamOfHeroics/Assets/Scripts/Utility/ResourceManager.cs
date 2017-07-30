@@ -22,6 +22,13 @@ public class ResourceManager : MonoBehaviour {
         return Resources.Load<ChaseLevelData>(fileName);
     }
 
+    public static BossData LoadBossLevel(int difficulty)
+    {
+        string fileName = "Level Data/Nightmare/Nightmare " 
+            + difficulty.ToString();
+        return Resources.Load<BossData>(fileName);
+    }
+
     public static SkillData LoadSkill(string name)
     {
         string fileName = "Skill/" + name;

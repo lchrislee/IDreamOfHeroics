@@ -55,6 +55,8 @@ public class RealitySkillLevelManager : MonoBehaviour {
                 skillCount
             );
         }
-        PlaySessionManager.instance.ShowNextDream();
+
+        PlaySessionManager.instance
+            .ShowReality(PlaySessionManager.SCENE_REALITY_CLASS);
     }
 }

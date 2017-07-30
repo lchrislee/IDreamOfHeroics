@@ -52,6 +52,7 @@ public class ChaseLevelManager : MonoBehaviour {
         if (levelData == null)
         {
             PlaySessionManager.instance.CompleteDream(false, 0, 0, 0f);
+            return;
         }
         player.speed = levelData.playerSpeed;
         goalPosition = new Vector2(

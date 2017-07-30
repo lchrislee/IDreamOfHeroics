@@ -31,7 +31,7 @@ public class HealthUIManager : MonoBehaviour {
         SetHealth();
     }
 
-    public void InitializePlayerStats(int hp, int def)
+    public void InitializeStats(int hp, int def)
     {
         maxHp = hp;
         currentHp = maxHp;

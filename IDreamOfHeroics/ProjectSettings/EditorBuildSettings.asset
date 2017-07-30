@@ -35,3 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RealityStart.unity
     guid: 4ce553f9f714348c898be67716f2763f
+  - enabled: 1
+    path: Assets/Scenes/RealityClass.unity
+    guid: c4741b8639d7c4551ba201abf9bfb73f

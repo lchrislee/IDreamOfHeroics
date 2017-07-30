@@ -17,8 +17,7 @@ public class MainMenuManager : MonoBehaviour {
 	
     public void NewGame()
     {
-        PlaySessionManager.instance.ShowReality(
-            PlaySessionManager.SCENE_REALITY_START);
+        PlaySessionManager.instance.ShowStart();
     }
 
     public void LoadScene(int scene)
